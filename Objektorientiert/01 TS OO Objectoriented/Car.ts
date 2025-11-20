@@ -1,3 +1,5 @@
+import { Engine } from "./Engine.ts";
+
 export class Car{
     private color:string = "red";
 
@@ -7,6 +9,7 @@ export class Car{
     getHorsePower():number{
         return this.engine.getHoresPower();
     }
+    
     getColor():string{
         return this.color;
     }
