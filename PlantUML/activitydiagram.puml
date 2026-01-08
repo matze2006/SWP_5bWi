@@ -1,0 +1,32 @@
+@startuml
+start
+
+:Spieler meldet sich zum Training an;
+if (Anmeldefrist gültig?) then (Ja)
+  :Spieler wird in die Teilnehmerliste eingetragen;
+else (Nein)
+  :Anmeldung abgelehnt;
+  stop
+endif
+
+:Training startet zur geplanten Zeit;
+:Spieler erscheint am Trainingsort;
+
+if (Spieler pünktlich?) then (Ja)
+  :Teilnahme registrieren;
+else (Nein)
+  :Verspätung dokumentieren;
+endif
+
+:Training durchführen;
+:Übungen, Pausen, Auswertung;
+
+if (Training beendet?) then (Ja)
+  :Teilnahmezeit speichern;
+else (Nein)
+  :Fortsetzen;
+endif
+
+:Training abgeschlossen;
+stop
+@enduml

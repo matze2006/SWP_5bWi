@@ -1,0 +1,49 @@
+@startuml
+
+interface Lockable {
+  + lock(): void
+  + unlock(): void
+  + isLocked(): boolean
+}
+
+interface Securable {
+  + checkSecurity(): boolean
+}
+
+class Door implements Lockable {
+  - locked: boolean
+  + lock(): void
+  + unlock(): void
+  + isLocked(): boolean
+}
+
+class Window implements Lockable {
+  - locked: boolean
+  + lock(): void
+  + unlock(): void
+  + isLocked(): boolean
+}
+
+class Car implements Securable {
+  + checkSecurity(): boolean
+}
+
+class House implements Securable {
+  + checkSecurity(): boolean
+}
+
+class SecurityService {
+  + verifySecurity(obj: Securable): boolean
+}
+
+Car "1" -- "2..5" Door : has >
+House "1" -- "1..n" Door : has >
+House "1" -- "0..n" Window : has >
+
+Door ..|> Lockable
+Window ..|> Lockable
+Car ..|> Securable
+House ..|> Securable
+SecurityService --> Securable : checks
+
+@enduml
